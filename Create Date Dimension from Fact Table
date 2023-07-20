@@ -1,0 +1,23 @@
+// You can create Date Dimension by Fact Table in Power BI
+// 1. Go to "Data View"
+// 2. Create Table from "New Table" on Toolbar
+// 3. Put the following code and change date column name, base on your data
+
+DIM_DATE = 
+VAR __StartDate = min({DATE_COLUMN_NAME})
+VAR __EndDate = max({DATE_COLUMN_NAME})
+RETURN
+ADDCOLUMNS (
+    CALENDAR(
+                __StartDate, __EndDate
+),
+    "Year", YEAR ( [Date] ),
+    "Month", FORMAT ( [Date], "mmm" ),
+    "MonthID", MONTH ( [Date] ),
+    "MonthYear", FORMAT ( [Date], "mmm yyyy" ),
+    "MonthYearID", INT(FORMAT ( [Date], "yyyymm" )),
+    "QuarterYear", "Q" & FORMAT ( [Date], "q yyyy" ),
+    "QuarterYearID", INT(FORMAT ( [Date], "yyyyq" ))
+)
+
+
