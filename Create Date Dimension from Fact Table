@@ -2,6 +2,7 @@
 // 1. Go to "Data View"
 // 2. Create Table from "New Table" on Toolbar
 // 3. Put the following code and change date column name, base on your data
+// 4. After create date table --> do not forget to join table relation
 
 DIM_DATE = 
 VAR __StartDate = min({DATE_COLUMN_NAME})
