@@ -1,0 +1,19 @@
+SubcategoryRankMeasure = 
+VAR CurrentCategory = SELECTEDVALUE(ORDER[STORE_TYPE])
+RETURN
+    RANKX(
+        FILTER(
+            ALL(ORDER[STORE_TYPE], ORDER[STORE]), 
+            ORDER[STORE_TYPE] = CurrentCategory
+        ),
+        CALCULATE(SUM(ORDER[ORDER_AMT])),
+        ,
+        DESC,
+        Dense
+    )
+
+
+
+
+# Create Measure and rename your table & column
+# Put new measure in visualization with category and sub category
